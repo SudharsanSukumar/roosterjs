@@ -30,3 +30,7 @@ export { SelectionRangeTypes } from './SelectionRangeTypes';
 export { NumberingListType } from './NumberingListType';
 export { BulletListType } from './BulletListType';
 export { DefinitionType } from './DefinitionType';
+
+export { ContentModelBlockGroupType } from './BlockGroupType';
+export { ContentModelBlockType } from './BlockType';
+export { ContentModelSegmentFormat } from './SegmentFormat';

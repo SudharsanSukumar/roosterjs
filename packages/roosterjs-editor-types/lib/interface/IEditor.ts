@@ -9,6 +9,7 @@ import Region from './Region';
 import SelectionPath from './SelectionPath';
 import TableSelection from './TableSelection';
 import { ChangeSource } from '../enum/ChangeSource';
+import { ContentModelDocument } from '../contentModel/ContentModel';
 import { ContentPosition } from '../enum/ContentPosition';
 import { DOMEventHandler } from '../type/domEventHandler';
 import { EditorUndoState, PendableFormatState, StyleBasedFormatState } from './FormatState';
@@ -619,6 +620,11 @@ export default interface IEditor {
      * @deprecated Use getZoomScale() instead
      */
     getSizeTransformer(): SizeTransformer;
+
+    /**
+     * Get Content Model of current content
+     */
+    getContentModel: () => ContentModelDocument;
 
     //#endregion
 }
