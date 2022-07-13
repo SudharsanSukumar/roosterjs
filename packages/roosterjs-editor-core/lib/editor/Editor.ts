@@ -1,11 +1,13 @@
 import createCorePlugins, { getPluginState } from '../corePlugins/createCorePlugins';
 import { coreApiMap } from '../coreApi/coreApiMap';
+import { createContentModelFromDOM } from 'roosterjs-content-model';
 import {
     BlockElement,
     ChangeSource,
     ClipboardData,
     ColorTransformDirection,
     ContentChangedData,
+    ContentModelDocument,
     ContentPosition,
     DefaultFormat,
     DOMEventHandler,
@@ -964,6 +966,13 @@ export default class Editor implements IEditor {
                 );
             }
         }
+    }
+
+    /**
+     * Get Content Model of current content
+     */
+    getContentModel(): ContentModelDocument {
+        return createContentModelFromDOM(this.core.contentDiv, this.getSelectionRange());
     }
 
     //#endregion

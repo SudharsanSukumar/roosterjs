@@ -4,3 +4,4 @@ export * from './enum/index';
 export * from './event/index';
 export * from './interface/index';
 export * from './type/index';
+export * from './contentModel/index';

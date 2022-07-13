@@ -34,7 +34,14 @@ function processFile(dir, filename, files, externalDependencies) {
     if (index >= 0) {
         files = files.slice(index);
         files.push(thisFilename);
-        err(`Circular dependency: \r\n${files.join(' =>\r\n')}`);
+
+        const packageNames = files.map(findPackageName).sort();
+
+        if (packageNames[0] == packageNames[packageNames.length - 1]) {
+            return; // All packages names are the same, that is allowed
+        } else {
+            err(`Cross package circular dependency: \r\n${files.join(' =>\r\n')}`);
+        }
     }
 
     var match;
@@ -59,6 +66,16 @@ function processFile(dir, filename, files, externalDependencies) {
                 e
         );
     }
+}
+
+function findPackageName(filename) {
+    for (let i = 0; i < allPackages.length; i++) {
+        if (filename.indexOf(allPackages[i])) {
+            return allPackages[i];
+        }
+    }
+
+    err('Package name not found in file name: ' + filename);
 }
 
 function checkDependency() {

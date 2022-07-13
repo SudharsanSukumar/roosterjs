@@ -3,7 +3,8 @@
     "description": "Editor core for roosterjs",
     "dependencies": {
         "roosterjs-editor-types": "",
-        "roosterjs-editor-dom": ""
+        "roosterjs-editor-dom": "",
+        "roosterjs-content-model": ""
     },
     "main": "./lib/index.ts"
 }
