@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+        "strict": true
+    },
+    "extends": "../tsconfig.json",
+    "include": ["./lib/**/*.ts", "../../../roosterjs-editor-types/tsconfig.child.json"]
+}
