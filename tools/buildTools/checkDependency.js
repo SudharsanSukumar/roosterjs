@@ -13,7 +13,9 @@ function getPossibleNames(dir, objectName) {
 }
 
 function processFile(dir, filename, files, externalDependencies) {
-    if (externalDependencies.some(d => d == filename || filename.indexOf(d + '/') == 0)) {
+    if (
+        externalDependencies.some(d => (typeof d === 'string' ? d == filename : d.test(filename)))
+    ) {
         return;
     }
 
@@ -50,6 +52,7 @@ function processFile(dir, filename, files, externalDependencies) {
         var dir = path.dirname(thisFilename);
         var content = fs.readFileSync(thisFilename).toString();
         var reg = /from\s+'([^']+)';$/gm;
+
         while ((match = reg.exec(content))) {
             var nextFile = match[1];
             if (nextFile) {
@@ -78,6 +81,11 @@ function findPackageName(filename) {
     err('Package name not found in file name: ' + filename);
 }
 
+const GlobalAllowedCrossPackageDependency = [
+    'roosterjs-editor-types/lib/compatibleTypes',
+    /@fluentui\/react(\/.*)?/,
+];
+
 function checkDependency() {
     allPackages.forEach(packageName => {
         const packageRoot = findPackageRoot(packageName);
@@ -91,7 +99,7 @@ function checkDependency() {
             packageRoot,
             path.join(packageName, 'lib/index'),
             [],
-            dependencies.concat(peerDependencies)
+            dependencies.concat(peerDependencies).concat(GlobalAllowedCrossPackageDependency)
         );
     });
 }
