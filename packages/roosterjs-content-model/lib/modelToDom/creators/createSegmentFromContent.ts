@@ -1,0 +1,69 @@
+import { ContentModelSegment } from '../../publicTypes/segment/ContentModelSegment';
+import { ContentModelSegmentType } from '../../publicTypes/enum/SegmentType';
+import { createBlockFromContentModel } from './createBlockFromContentModel';
+import { getSelectionPosition } from '../utils/getSelectionPosition';
+import { SegmentFormatHandlers } from '../../formatHandlers/SegmentFormatHandlers';
+import { SelectionInfo } from '../types/SelectionInfo';
+
+/**
+ * @internal
+ */
+export function createSegmentFromContent(
+    doc: Document,
+    parent: Node,
+    segment: ContentModelSegment,
+    info: SelectionInfo
+) {
+    if (!info.start && segment.isSelected) {
+        info.start = getSelectionPosition(info.context);
+    }
+
+    if (info.start && !info.end && !segment.isSelected) {
+        info.end = getSelectionPosition(info.context);
+    }
+
+    let element: HTMLElement | null = null;
+
+    switch (segment.segmentType) {
+        case ContentModelSegmentType.Image:
+            element = doc.createElement('img');
+            element.setAttribute('src', segment.src);
+            info.context.currentSegmentNode = element;
+            break;
+        case ContentModelSegmentType.Text:
+            const txt = doc.createTextNode(segment.text);
+
+            if (segment.format.linkHref) {
+                element = doc.createElement('a');
+                element.setAttribute('href', segment.format.linkHref);
+                if (segment.format.linkTarget) {
+                    element.setAttribute('target', segment.format.linkTarget);
+                }
+            } else {
+                element = doc.createElement('span');
+            }
+            element.appendChild(txt);
+            info.context.currentSegmentNode = txt;
+            break;
+
+        case ContentModelSegmentType.Br:
+            element = doc.createElement('br');
+            info.context.currentSegmentNode = element;
+            break;
+
+        case ContentModelSegmentType.General:
+            element = segment.node as HTMLElement;
+            info.context.currentSegmentNode = element;
+
+            createBlockFromContentModel(doc, parent, segment, info);
+            break;
+    }
+
+    if (element) {
+        parent.appendChild(element);
+
+        SegmentFormatHandlers.forEach(handler => {
+            handler.writeBack(segment.format, element!);
+        });
+    }
+}
