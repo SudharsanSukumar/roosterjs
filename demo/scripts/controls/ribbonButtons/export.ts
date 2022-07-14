@@ -1,5 +1,4 @@
 import { RibbonButton } from 'roosterjs-react';
-import { trustedHTMLHandler } from '../../utils/trustedHTMLHandler';
 
 /**
  * Key of localized strings of Zoom button
@@ -16,6 +15,6 @@ export const exportContent: RibbonButton<ExportButtonStringKey> = {
     flipWhenRtl: true,
     onClick: editor => {
         const win = editor.getDocument().defaultView.open();
-        win.document.write(trustedHTMLHandler(editor.getContent()));
+        win.document.write(editor.getContent());
     },
 };

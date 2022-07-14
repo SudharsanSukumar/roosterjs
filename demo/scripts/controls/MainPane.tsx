@@ -19,7 +19,6 @@ import { getDarkColor } from 'roosterjs-color-utils';
 import { PartialTheme, ThemeProvider } from '@fluentui/react/lib/Theme';
 import { popout, PopoutButtonStringKey } from './ribbonButtons/popout';
 import { registerWindowForCss, unregisterWindowForCss } from '../utils/cssMonitor';
-import { trustedHTMLHandler } from '../utils/trustedHTMLHandler';
 import { WindowProvider } from '@fluentui/react/lib/WindowProvider';
 import { zoom, ZoomButtonStringKey } from './ribbonButtons/zoom';
 import {
@@ -191,7 +190,7 @@ class MainPane extends MainPaneBase {
         this.updateContentPlugin.forceUpdate();
 
         const win = window.open(POPOUT_URL, POPOUT_TARGET, POPOUT_FEATURES);
-        win.document.write(trustedHTMLHandler(POPOUT_HTML));
+        win.document.write(POPOUT_HTML);
         win.addEventListener('beforeunload', () => {
             this.updateContentPlugin.forceUpdate();
 
@@ -361,7 +360,6 @@ class MainPane extends MainPaneBase {
                         getDarkColor={getDarkColor}
                         experimentalFeatures={this.state.initState.experimentalFeatures}
                         undoMetadataSnapshotService={this.snapshotPlugin.getSnapshotService()}
-                        trustedHTMLHandler={trustedHTMLHandler}
                         zoomScale={this.state.scale}
                         initialContent={this.content}
                         editorCreator={this.state.editorCreator}

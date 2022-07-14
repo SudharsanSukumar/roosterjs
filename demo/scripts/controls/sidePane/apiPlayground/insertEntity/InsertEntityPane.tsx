@@ -3,7 +3,6 @@ import ApiPaneProps from '../ApiPaneProps';
 import { Entity } from 'roosterjs-editor-types';
 import { getEntityFromElement, getEntitySelector } from 'roosterjs-editor-dom';
 import { insertEntity } from 'roosterjs-editor-api';
-import { trustedHTMLHandler } from '../../../../utils/trustedHTMLHandler';
 
 const styles = require('./InsertEntityPane.scss');
 
@@ -73,7 +72,7 @@ export default class InsertEntityPane extends React.Component<ApiPaneProps, Inse
     private insertEntity = () => {
         const entityType = this.entityType.current.value;
         const node = document.createElement('span');
-        node.innerHTML = trustedHTMLHandler(this.html.current.value);
+        node.innerHTML = this.html.current.value;
         node.dataset.hydratedHtml = this.hydratedHtml.current.value.trim();
         const isBlock = this.styleBlock.current.checked;
         const isReadonly = this.isReadonly.current.checked;
