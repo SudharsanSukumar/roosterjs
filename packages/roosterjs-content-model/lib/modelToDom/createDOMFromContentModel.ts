@@ -1,8 +1,9 @@
 import { ContentModelDocument } from '../publicTypes/block/group/ContentModelDocument';
 import { createBlockFromContentModel } from './creators/createBlockFromContentModel';
+import { createRange } from 'roosterjs-editor-dom/lib';
 import { getSelectionPosition } from './utils/getSelectionPosition';
 import { isNodeOfType } from '../domUtils/isNodeOfType';
-import { NodePosition, NodeType } from 'roosterjs-editor-types';
+import { NodeType, SelectionRangeEx, SelectionRangeTypes } from 'roosterjs-editor-types';
 import { optimize } from './optimize/optimize';
 import { SelectionInfo } from './types/SelectionInfo';
 
@@ -10,12 +11,12 @@ import { SelectionInfo } from './types/SelectionInfo';
  * Create DOM tree from Content Model
  * @param model The root of Content Model
  * @param optimizeLevel Optimization level, @default 2
- * @returns A DocumentFragment of DOM tree from the Content Model
+ * @returns A DocumentFragment of DOM tree from the Content Model and the selection from this model
  */
 export default function createDOMFromContentModel(
     model: ContentModelDocument,
     optimizeLevel: number = 2
-): [DocumentFragment, NodePosition | undefined, NodePosition | undefined] {
+): [DocumentFragment, SelectionRangeEx | undefined] {
     const fragment = model.document.createDocumentFragment();
     const info: SelectionInfo = {
         context: {
@@ -40,5 +41,16 @@ export default function createDOMFromContentModel(
 
     optimize(fragment, optimizeLevel);
 
-    return [fragment, info.start, info.end];
+    let selection: SelectionRangeEx | undefined = undefined;
+
+    if (info.start && info.end) {
+        const range = createRange(info.start, info.end);
+        selection = {
+            type: SelectionRangeTypes.Normal,
+            ranges: [range],
+            areAllCollapsed: range.collapsed,
+        };
+    }
+
+    return [fragment, selection];
 }
