@@ -1,6 +1,6 @@
 import { ContentModelDocument } from '../publicTypes/block/group/ContentModelDocument';
 import { createBlockFromContentModel } from './creators/createBlockFromContentModel';
-import { createRange } from 'roosterjs-editor-dom/lib';
+import { createRange } from 'roosterjs-editor-dom';
 import { getSelectionPosition } from './utils/getSelectionPosition';
 import { isNodeOfType } from '../domUtils/isNodeOfType';
 import { NodeType, SelectionRangeEx, SelectionRangeTypes } from 'roosterjs-editor-types';
