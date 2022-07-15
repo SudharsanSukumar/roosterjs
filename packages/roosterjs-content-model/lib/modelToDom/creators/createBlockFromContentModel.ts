@@ -27,7 +27,7 @@ export function createBlockFromContentModel(
 
             switch (block.blockGroupType) {
                 case ContentModelBlockGroupType.General:
-                    newParent = block.node;
+                    newParent = block.node.cloneNode();
                     parent.appendChild(newParent);
                     break;
                 default:

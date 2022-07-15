@@ -52,8 +52,7 @@ export function createSegmentFromContent(
             break;
 
         case ContentModelSegmentType.General:
-            element = segment.node as HTMLElement;
-            info.context.currentSegmentNode = element;
+            info.context.currentSegmentNode = segment.node;
 
             createBlockFromContentModel(doc, parent, segment, info);
             break;

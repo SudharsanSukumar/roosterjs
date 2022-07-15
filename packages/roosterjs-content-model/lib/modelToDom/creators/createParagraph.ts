@@ -23,14 +23,10 @@ export function createParagraph(
         ParagraphFormatHandlers.forEach(handler => handler.writeBack(paragraph.format, container));
     }
 
-    setCurrentBlockElement(info.context, container);
+    info.context.currentBlockNode = container;
+    info.context.currentSegmentNode = null;
 
     paragraph.segments.forEach(segment => {
         createSegmentFromContent(doc, container, segment, info);
     });
-}
-
-function setCurrentBlockElement(context: SelectionContext, element: HTMLElement) {
-    context.currentBlockNode = element;
-    context.currentSegmentNode = null;
 }
