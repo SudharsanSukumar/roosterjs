@@ -7,7 +7,7 @@ import { ElementProcessor } from '../types/ElementProcessor';
  * @internal
  */
 export const generalBlockProcessor: ElementProcessor = (group, context, element, defaultStyle) => {
-    const block = createGeneralBlock(context, element);
+    const block = createGeneralBlock(element);
     const originalBlockFormat = context.blockFormat;
     const originalSegmentFormat = context.segmentFormat;
 
