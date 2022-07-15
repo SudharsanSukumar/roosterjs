@@ -13,7 +13,7 @@ export function createGeneralBlock(
     return {
         blockType: ContentModelBlockType.BlockGroup,
         blockGroupType: ContentModelBlockGroupType.General,
-        node: element.cloneNode(),
+        node: element,
         blocks: [],
     };
 }

@@ -15,7 +15,7 @@ export function createGeneralSegment(
         segmentType: ContentModelSegmentType.General,
         format: {},
         blocks: [],
-        node: element.cloneNode(),
+        node: element,
         blockType: ContentModelBlockType.BlockGroup,
         blockGroupType: ContentModelBlockGroupType.General,
     };
