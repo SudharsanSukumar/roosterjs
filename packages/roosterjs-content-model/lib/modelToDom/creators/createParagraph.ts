@@ -1,7 +1,6 @@
 import { ContentModelParagraph } from '../../publicTypes/block/ContentModelParagraph';
 import { createSegmentFromContent } from './createSegmentFromContent';
 import { ParagraphFormatHandlers } from '../../formatHandlers/ParagraphFormatHandlers';
-import { SelectionContext } from '../types/SelectionContext';
 import { SelectionInfo } from '../types/SelectionInfo';
 
 /**
