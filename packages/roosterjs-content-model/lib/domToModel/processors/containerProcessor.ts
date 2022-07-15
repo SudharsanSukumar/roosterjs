@@ -1,4 +1,5 @@
 import { addSegment } from '../utils/addSegment';
+import { BlockDisplay } from '../defaultStyles/BlockDisplay';
 import { ContentModelBlockGroup } from '../../publicTypes/block/group/ContentModelBlockGroup';
 import { createSelectionMarker } from '../creators/createSelectionMarker';
 import { DefaultStyleMap } from '../defaultStyles/DefaultStyleMap';
@@ -9,36 +10,6 @@ import { isNodeOfType } from '../../domUtils/isNodeOfType';
 import { NodeType } from 'roosterjs-editor-types';
 import { ProcessorMap } from './ProcessorMap';
 import { textProcessor } from './textProcessor';
-
-/**
- * @internal
- * https://www.w3schools.com/cssref/pr_class_display.asp
- */
-export const BlockDisplay = ['block', 'flex', 'grid', 'list-item'];
-
-// const InlineDisplay = [
-//     'inline',
-//     'inline-block',
-//     'inline-flex',
-//     'inline-grid',
-//     'inline-table',
-//     'contents',
-// ];
-
-// const OtherDisplay = [
-//     'table',
-//     'table-caption',
-//     'table-column-group',
-//     'table-header-group',
-//     'table-footer-group',
-//     'table-row-group',
-//     'table-cell',
-//     'table-column',
-//     'table-row',
-//     'run-in',
-//     'initial',
-//     'none',
-// ];
 
 /**
  * @internal
