@@ -1,7 +1,7 @@
 import { addBlock } from '../utils/addBlock';
 import { containerProcessor } from './containerProcessor';
 import { createParagraph } from '../creators/createParagraph';
-import { ElementProcessor } from '../types/ElementProcessor';
+import { ElementProcessor } from './ElementProcessor';
 import { ParagraphFormatHandlers } from '../../formatHandlers/ParagraphFormatHandlers';
 import { SegmentFormatHandlers } from '../../formatHandlers/SegmentFormatHandlers';
 

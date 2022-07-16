@@ -1,5 +1,5 @@
 import { containerProcessor } from './containerProcessor';
-import { ElementProcessor } from '../types/ElementProcessor';
+import { ElementProcessor } from './ElementProcessor';
 import { SegmentFormatHandlers } from '../../formatHandlers/SegmentFormatHandlers';
 
 /**

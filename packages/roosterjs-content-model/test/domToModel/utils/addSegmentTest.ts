@@ -8,13 +8,16 @@ import { ContentModelSegmentType } from '../../../lib/publicTypes/enum/SegmentTy
 import { createContentModelDocument } from '../../../lib/domToModel/creators/createContentModelDocument';
 import { createParagraph } from '../../../lib/domToModel/creators/createParagraph';
 import { createText } from '../../../lib/domToModel/creators/createText';
+import { FormatContext } from '../../../lib/domToModel/types/FormatContext';
+
+const formatContext: FormatContext = { blockFormat: {}, segmentFormat: {}, isInSelection: false };
 
 describe('addSegment', () => {
     it('Add segment to empty document', () => {
         const doc = createContentModelDocument(document);
-        const segment = createText('test');
+        const segment = createText(formatContext, 'test');
 
-        addSegment(doc, segment);
+        addSegment(doc, formatContext, segment);
 
         expect(doc).toEqual({
             blockType: ContentModelBlockType.BlockGroup,
@@ -27,8 +30,10 @@ describe('addSegment', () => {
                         {
                             segmentType: ContentModelSegmentType.Text,
                             text: 'test',
+                            format: {},
                         },
                     ],
+                    format: {},
                 },
             ],
             document: document,
@@ -37,11 +42,11 @@ describe('addSegment', () => {
 
     it('Add segment to document contains an empty paragraph', () => {
         const doc = createContentModelDocument(document);
-        addBlock(doc, createParagraph());
+        addBlock(doc, createParagraph(formatContext));
 
-        const segment = createText('test');
+        const segment = createText(formatContext, 'test');
 
-        addSegment(doc, segment);
+        addSegment(doc, formatContext, segment);
 
         expect(doc).toEqual({
             blockType: ContentModelBlockType.BlockGroup,
@@ -53,8 +58,10 @@ describe('addSegment', () => {
                         {
                             segmentType: ContentModelSegmentType.Text,
                             text: 'test',
+                            format: {},
                         },
                     ],
+                    format: {},
                 },
             ],
             document: document,
@@ -69,14 +76,16 @@ describe('addSegment', () => {
                 {
                     segmentType: ContentModelSegmentType.Text,
                     text: 'test1',
+                    format: {},
                 },
             ],
+            format: {},
         };
         addBlock(doc, block);
 
-        const segment = createText('test2');
+        const segment = createText(formatContext, 'test2');
 
-        addSegment(doc, segment);
+        addSegment(doc, formatContext, segment);
 
         expect(doc).toEqual({
             blockType: ContentModelBlockType.BlockGroup,
@@ -88,12 +97,15 @@ describe('addSegment', () => {
                         {
                             segmentType: ContentModelSegmentType.Text,
                             text: 'test1',
+                            format: {},
                         },
                         {
                             segmentType: ContentModelSegmentType.Text,
                             text: 'test2',
+                            format: {},
                         },
                     ],
+                    format: {},
                 },
             ],
             document: document,
@@ -111,9 +123,9 @@ describe('addSegment', () => {
         };
         addBlock(doc, block);
 
-        const segment = createText('test');
+        const segment = createText(formatContext, 'test');
 
-        addSegment(doc, segment);
+        addSegment(doc, formatContext, segment);
 
         expect(doc).toEqual({
             blockType: ContentModelBlockType.BlockGroup,
@@ -127,8 +139,10 @@ describe('addSegment', () => {
                         {
                             segmentType: ContentModelSegmentType.Text,
                             text: 'test',
+                            format: {},
                         },
                     ],
+                    format: {},
                 },
             ],
             document: document,

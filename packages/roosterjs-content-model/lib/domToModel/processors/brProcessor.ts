@@ -1,6 +1,6 @@
 import { addSegment } from '../utils/addSegment';
 import { createBr } from '../creators/createBr';
-import { ElementProcessor } from '../types/ElementProcessor';
+import { ElementProcessor } from './ElementProcessor';
 
 /**
  * @internal

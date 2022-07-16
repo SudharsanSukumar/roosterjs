@@ -6,6 +6,9 @@ import { createGeneralBlock } from '../../../lib/domToModel/creators/createGener
 import { createGeneralSegment } from '../../../lib/domToModel/creators/createGeneralSegment';
 import { createParagraph } from '../../../lib/domToModel/creators/createParagraph';
 import { createText } from '../../../lib/domToModel/creators/createText';
+import { FormatContext } from '../../../lib/domToModel/types/FormatContext';
+
+const formatContext: FormatContext = { blockFormat: {}, segmentFormat: {}, isInSelection: false };
 
 describe('Creators', () => {
     it('createContentModelDocument', () => {
@@ -33,7 +36,7 @@ describe('Creators', () => {
 
     it('createGeneralSegment', () => {
         const element = document.createElement('div');
-        const result = createGeneralSegment(element);
+        const result = createGeneralSegment(formatContext, element);
 
         expect(result).toEqual({
             segmentType: ContentModelSegmentType.General,
@@ -41,34 +44,38 @@ describe('Creators', () => {
             node: element,
             blockType: ContentModelBlockType.BlockGroup,
             blockGroupType: ContentModelBlockGroupType.General,
+            format: {},
         });
     });
 
     it('createParagraph - not dummy block', () => {
-        const result = createParagraph(false);
+        const result = createParagraph(formatContext, false);
 
         expect(result).toEqual({
             blockType: ContentModelBlockType.Paragraph,
             segments: [],
+            format: {},
         });
     });
 
     it('createParagraph - dummy block', () => {
-        const result = createParagraph(true);
+        const result = createParagraph(formatContext, true);
 
         expect(result).toEqual({
             blockType: ContentModelBlockType.Paragraph,
             segments: [],
+            format: {},
             isDummy: true,
         });
     });
 
     it('createText', () => {
         const text = 'test';
-        const result = createText(text);
+        const result = createText(formatContext, text);
 
         expect(result).toEqual({
             segmentType: ContentModelSegmentType.Text,
+            format: {},
             text: text,
         });
     });

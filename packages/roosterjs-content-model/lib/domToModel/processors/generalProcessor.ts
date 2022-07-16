@@ -1,5 +1,5 @@
 import { BlockDisplay } from '../defaultStyles/BlockDisplay';
-import { ElementProcessor } from '../types/ElementProcessor';
+import { ElementProcessor } from './ElementProcessor';
 import { knownBlockProcessor } from './knownBlockProcessor';
 import { knownSegmentProcessor } from './knownSegmentProcessor';
 

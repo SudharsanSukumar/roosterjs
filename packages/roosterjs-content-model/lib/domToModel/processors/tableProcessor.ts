@@ -2,7 +2,7 @@ import { addBlock } from '../utils/addBlock';
 import { containerProcessor } from './containerProcessor';
 import { createTable } from '../creators/createTable';
 import { createTableCell } from '../creators/createTableCell';
-import { ElementProcessor } from '../types/ElementProcessor';
+import { ElementProcessor } from './ElementProcessor';
 
 /**
  * @internal

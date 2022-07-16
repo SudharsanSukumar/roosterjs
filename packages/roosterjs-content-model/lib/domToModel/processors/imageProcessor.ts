@@ -1,6 +1,6 @@
 import { addSegment } from '../utils/addSegment';
 import { createImage } from '../creators/createImage';
-import { ElementProcessor } from '../types/ElementProcessor';
+import { ElementProcessor } from './ElementProcessor';
 import { SegmentFormatHandlers } from '../../formatHandlers/SegmentFormatHandlers';
 
 /**

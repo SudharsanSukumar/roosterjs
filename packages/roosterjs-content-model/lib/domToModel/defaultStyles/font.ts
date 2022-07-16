@@ -1,4 +1,4 @@
-import { DefaultFormatParserType } from '../types/DefaultFormatParserType';
+import { DefaultFormatParserType } from './DefaultFormatParserType';
 
 const FontSizes = ['10px', '13px', '16px', '18px', '24px', '32px', '48px'];
 

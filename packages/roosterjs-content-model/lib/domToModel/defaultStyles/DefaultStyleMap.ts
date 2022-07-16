@@ -4,7 +4,7 @@ import { block } from './block';
 import { blockquote } from './blockquote';
 import { center } from './center';
 import { dd } from './dd';
-import { DefaultFormatParserType } from '../types/DefaultFormatParserType';
+import { DefaultFormatParserType } from './DefaultFormatParserType';
 import { dl } from './dl';
 import { font } from './font';
 import { i } from './i';

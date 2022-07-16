@@ -1,7 +1,6 @@
 import { containerProcessor } from './processors/containerProcessor';
 import { ContentModelBlock } from '../publicTypes/block/ContentModelBlock';
 import { ContentModelBlockGroup } from '../publicTypes/block/group/ContentModelBlockGroup';
-import { ContentModelBlockGroupType } from '../publicTypes/enum/BlockGroupType';
 import { ContentModelBlockType } from '../publicTypes/enum/BlockType';
 import { ContentModelDocument } from '../publicTypes/block/group/ContentModelDocument';
 import { ContentModelSegment } from '../publicTypes/segment/ContentModelSegment';

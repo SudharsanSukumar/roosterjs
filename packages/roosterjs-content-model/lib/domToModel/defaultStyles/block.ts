@@ -1,4 +1,4 @@
-import { DefaultFormatParserType } from '../types/DefaultFormatParserType';
+import { DefaultFormatParserType } from './DefaultFormatParserType';
 
 /**
  * @internal

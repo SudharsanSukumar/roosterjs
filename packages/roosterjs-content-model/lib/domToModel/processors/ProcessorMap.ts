@@ -1,5 +1,5 @@
 import { brProcessor } from './brProcessor';
-import { ElementProcessor } from '../types/ElementProcessor';
+import { ElementProcessor } from './ElementProcessor';
 import { generalProcessor } from './generalProcessor';
 import { imageProcessor } from './imageProcessor';
 import { tableProcessor } from './tableProcessor';

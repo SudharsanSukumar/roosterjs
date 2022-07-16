@@ -10,6 +10,7 @@ describe('addBlock', () => {
         const block: ContentModelBlock = {
             blockType: ContentModelBlockType.Paragraph,
             segments: [],
+            format: {},
         };
 
         addBlock(doc, block);

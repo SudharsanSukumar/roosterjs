@@ -1,5 +1,5 @@
 import { block } from './block';
-import { DefaultFormatParserType } from '../types/DefaultFormatParserType';
+import { DefaultFormatParserType } from './DefaultFormatParserType';
 import { i } from './i';
 
 /**
