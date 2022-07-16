@@ -6,6 +6,7 @@ import { ContentModelBlockType } from '../publicTypes/enum/BlockType';
 import { ContentModelDocument } from '../publicTypes/block/group/ContentModelDocument';
 import { ContentModelSegment } from '../publicTypes/segment/ContentModelSegment';
 import { ContentModelSegmentType } from '../publicTypes/enum/SegmentType';
+import { createContentModelDocument } from './creators/createContentModelDocument';
 import { FormatContext } from './types/FormatContext';
 
 /**
@@ -15,25 +16,16 @@ import { FormatContext } from './types/FormatContext';
  * @returns A Content Model of the given root and selection
  */
 export default function createContentModelFromDOM(
-    root: Node,
+    root: ParentNode,
     range: Range | null
 ): ContentModelDocument {
     const context = createFormatContext(range);
-    const model = createEmptyModel(root.ownerDocument!);
+    const model = createContentModelDocument(root.ownerDocument!);
 
     containerProcessor(model, root, context);
     normalizeModel(model);
 
     return model;
-}
-
-function createEmptyModel(doc: Document): ContentModelDocument {
-    return {
-        blockGroupType: ContentModelBlockGroupType.Document,
-        blockType: ContentModelBlockType.BlockGroup,
-        blocks: [],
-        document: doc,
-    };
 }
 
 function createFormatContext(range: Range | null): FormatContext {

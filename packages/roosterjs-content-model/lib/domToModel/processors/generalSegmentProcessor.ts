@@ -1,7 +1,7 @@
 import { addSegment } from '../utils/addSegment';
 import { containerProcessor } from './containerProcessor';
 import { createGeneralSegment } from '../creators/createGeneralSegment';
-import { ElementProcessor } from '../types/ElementProcessor';
+import { ElementProcessor } from './ElementProcessor';
 
 /**
  * @internal

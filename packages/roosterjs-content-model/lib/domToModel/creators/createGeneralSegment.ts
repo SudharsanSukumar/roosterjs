@@ -12,12 +12,12 @@ export function createGeneralSegment(
     element: HTMLElement
 ): ContentModelGeneralSegment {
     const result: ContentModelGeneralSegment = {
+        blockType: ContentModelBlockType.BlockGroup,
+        blockGroupType: ContentModelBlockGroupType.General,
         segmentType: ContentModelSegmentType.General,
         format: {},
         blocks: [],
         node: element,
-        blockType: ContentModelBlockType.BlockGroup,
-        blockGroupType: ContentModelBlockGroupType.General,
     };
 
     if (context.isInSelection) {

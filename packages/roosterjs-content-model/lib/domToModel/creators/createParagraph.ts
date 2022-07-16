@@ -5,7 +5,7 @@ import { FormatContext } from '../types/FormatContext';
 /**
  * @internal
  */
-export function createParagraph(context: FormatContext, isDummy: boolean): ContentModelParagraph {
+export function createParagraph(context: FormatContext, isDummy?: boolean): ContentModelParagraph {
     const result: ContentModelParagraph = {
         blockType: ContentModelBlockType.Paragraph,
         segments: [],
