@@ -20,7 +20,7 @@ describe('generalBlockProcessor', () => {
         const block: ContentModelGeneralBlock = {
             blockType: ContentModelBlockType.BlockGroup,
             blockGroupType: ContentModelBlockGroupType.General,
-            node: div,
+            element: div,
             blocks: [],
         };
 

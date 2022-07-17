@@ -1,13 +1,3 @@
-export { ContentModelBlockGroupType } from './enum/BlockGroupType';
-export { ContentModelBlockType } from './enum/BlockType';
-export { ContentModelSegmentType } from './enum/SegmentType';
-
-export { CompatibleContentModelBlockGroupType } from './compatibleEnum/BlockGroupType';
-export { CompatibleContentModelBlockType } from './compatibleEnum/BlockType';
-export { CompatibleContentModelSegmentType } from './compatibleEnum/SegmentType';
-
-export { ContentModelParagraphFormat } from './format/ParagraphFormat';
-export { ContentModelSegmentFormat } from './format/SegmentFormat';
 export { ContentModelBlockBase } from './block/ContentModelBlockBase';
 export { ContentModelList } from './block/ContentModelList';
 export { ContentModelTable } from './block/ContentModelTable';

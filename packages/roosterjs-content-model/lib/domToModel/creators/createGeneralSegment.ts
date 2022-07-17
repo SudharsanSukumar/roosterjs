@@ -17,7 +17,7 @@ export function createGeneralSegment(
         segmentType: ContentModelSegmentType.General,
         format: {},
         blocks: [],
-        node: element,
+        element: element,
     };
 
     if (context.isInSelection) {

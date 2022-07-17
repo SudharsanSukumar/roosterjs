@@ -14,7 +14,7 @@ export function createParagraph(
 ) {
     let container: HTMLElement;
 
-    if (paragraph.isDummy) {
+    if (paragraph.isImplicit) {
         container = parent as HTMLElement;
     } else {
         container = doc.createElement('div');

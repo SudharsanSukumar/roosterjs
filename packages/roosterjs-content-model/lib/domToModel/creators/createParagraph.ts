@@ -5,15 +5,18 @@ import { FormatContext } from '../types/FormatContext';
 /**
  * @internal
  */
-export function createParagraph(context: FormatContext, isDummy?: boolean): ContentModelParagraph {
+export function createParagraph(
+    context: FormatContext,
+    isImplicit?: boolean
+): ContentModelParagraph {
     const result: ContentModelParagraph = {
         blockType: ContentModelBlockType.Paragraph,
         segments: [],
         format: context.blockFormat,
     };
 
-    if (isDummy) {
-        result.isDummy = true;
+    if (isImplicit) {
+        result.isImplicit = true;
     }
 
     return result;
