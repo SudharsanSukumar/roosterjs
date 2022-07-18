@@ -1,11 +1,11 @@
 import { ContentModelTable } from '../../publicTypes/block/ContentModelTable';
-import { createBlockFromContentModel } from './createBlockFromContentModel';
+import { handleBlock } from './handleBlock';
 import { SelectionInfo } from '../types/SelectionInfo';
 
 /**
  * @internal
  */
-export function createTable(
+export function handleTable(
     doc: Document,
     parent: Node,
     table: ContentModelTable,
@@ -42,7 +42,7 @@ export function createTable(
                     td.colSpan = colSpan;
                 }
 
-                createBlockFromContentModel(doc, td, cell, info);
+                handleBlock(doc, td, cell, info);
             }
         }
     }

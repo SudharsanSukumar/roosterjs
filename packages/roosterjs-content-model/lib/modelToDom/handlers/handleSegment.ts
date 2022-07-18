@@ -1,14 +1,14 @@
 import { ContentModelSegment } from '../../publicTypes/segment/ContentModelSegment';
 import { ContentModelSegmentType } from '../../publicTypes/enum/SegmentType';
-import { createBlockFromContentModel } from './createBlockFromContentModel';
 import { getSelectionPosition } from '../utils/getSelectionPosition';
+import { handleBlock } from './handleBlock';
 import { SegmentFormatHandlers } from '../../formatHandlers/SegmentFormatHandlers';
 import { SelectionInfo } from '../types/SelectionInfo';
 
 /**
  * @internal
  */
-export function createSegmentFromContent(
+export function handleSegment(
     doc: Document,
     parent: Node,
     segment: ContentModelSegment,
@@ -52,9 +52,9 @@ export function createSegmentFromContent(
             break;
 
         case ContentModelSegmentType.General:
-            info.context.currentSegmentNode = segment.node;
+            info.context.currentSegmentNode = segment.element;
 
-            createBlockFromContentModel(doc, parent, segment, info);
+            handleBlock(doc, parent, segment, info);
             break;
     }
 

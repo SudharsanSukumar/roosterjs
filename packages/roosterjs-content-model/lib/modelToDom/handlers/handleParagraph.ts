@@ -1,12 +1,12 @@
 import { ContentModelParagraph } from '../../publicTypes/block/ContentModelParagraph';
-import { createSegmentFromContent } from './createSegmentFromContent';
+import { handleSegment } from './handleSegment';
 import { ParagraphFormatHandlers } from '../../formatHandlers/ParagraphFormatHandlers';
 import { SelectionInfo } from '../types/SelectionInfo';
 
 /**
  * @internal
  */
-export function createParagraph(
+export function handleParagraph(
     doc: Document,
     parent: Node,
     paragraph: ContentModelParagraph,
@@ -26,6 +26,6 @@ export function createParagraph(
     info.context.currentSegmentNode = null;
 
     paragraph.segments.forEach(segment => {
-        createSegmentFromContent(doc, container, segment, info);
+        handleSegment(doc, container, segment, info);
     });
 }

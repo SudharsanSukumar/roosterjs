@@ -1,14 +1,14 @@
 import { ContentModelBlock } from '../../publicTypes/block/ContentModelBlock';
 import { ContentModelBlockGroupType } from '../../publicTypes/enum/BlockGroupType';
 import { ContentModelBlockType } from '../../publicTypes/enum/BlockType';
-import { createParagraph } from './createParagraph';
-import { createTable } from './createTable';
+import { handleParagraph } from './handleParagraph';
+import { handleTable } from './handleTable';
 import { SelectionInfo } from '../types/SelectionInfo';
 
 /**
  * @internal
  */
-export function createBlockFromContentModel(
+export function handleBlock(
     doc: Document,
     parent: Node,
     block: ContentModelBlock,
@@ -19,7 +19,7 @@ export function createBlockFromContentModel(
             break;
 
         case ContentModelBlockType.Table:
-            createTable(doc, parent, block, info);
+            handleTable(doc, parent, block, info);
             break;
 
         case ContentModelBlockType.BlockGroup:
@@ -34,13 +34,11 @@ export function createBlockFromContentModel(
                     break;
             }
 
-            block.blocks.forEach(childBlock =>
-                createBlockFromContentModel(doc, newParent, childBlock, info)
-            );
+            block.blocks.forEach(childBlock => handleBlock(doc, newParent, childBlock, info));
 
             break;
         case ContentModelBlockType.Paragraph:
-            createParagraph(doc, parent, block, info);
+            handleParagraph(doc, parent, block, info);
             break;
     }
 }

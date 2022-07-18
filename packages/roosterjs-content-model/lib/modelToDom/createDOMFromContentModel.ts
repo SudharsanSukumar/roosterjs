@@ -1,10 +1,10 @@
 import { ContentModelDocument } from '../publicTypes/block/group/ContentModelDocument';
-import { createBlockFromContentModel } from './creators/createBlockFromContentModel';
 import { createRange } from 'roosterjs-editor-dom';
 import { getSelectionPosition } from './utils/getSelectionPosition';
+import { handleBlock } from './handlers/handleBlock';
 import { isNodeOfType } from '../domUtils/isNodeOfType';
 import { NodeType, SelectionRangeEx, SelectionRangeTypes } from 'roosterjs-editor-types';
-import { optimize } from './optimize/optimize';
+import { optimize } from './optimizers/optimize';
 import { SelectionInfo } from './types/SelectionInfo';
 
 /**
@@ -25,7 +25,7 @@ export default function createDOMFromContentModel(
         },
     };
 
-    createBlockFromContentModel(model.document, fragment, model, info);
+    handleBlock(model.document, fragment, model, info);
 
     if (info.start && !info.end) {
         info.end = getSelectionPosition(info.context);
