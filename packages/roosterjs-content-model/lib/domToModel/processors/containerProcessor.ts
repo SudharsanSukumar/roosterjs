@@ -6,9 +6,9 @@ import { DefaultStyleMap } from '../defaultStyles/DefaultStyleMap';
 import { FormatContext } from '../types/FormatContext';
 import { generalBlockProcessor } from './generalBlockProcessor';
 import { generalSegmentProcessor } from './generalSegmentProcessor';
+import { getProcessor } from './getProcessor';
 import { isNodeOfType } from '../../domUtils/isNodeOfType';
 import { NodeType } from 'roosterjs-editor-types';
-import { ProcessorMap } from './ProcessorMap';
 import { textProcessor } from './textProcessor';
 
 /**
@@ -39,10 +39,9 @@ export function containerProcessor(
 
         if (isNodeOfType(child, NodeType.Element)) {
             const style = DefaultStyleMap[child.tagName];
-            const tagProcessor = ProcessorMap[child.tagName];
             const format = style ? (typeof style === 'function' ? style(child) : style) : {};
             const processor =
-                tagProcessor ||
+                getProcessor(child.tagName) ||
                 (BlockDisplay.indexOf(child.style.display || format.display || '') >= 0
                     ? generalBlockProcessor
                     : generalSegmentProcessor);

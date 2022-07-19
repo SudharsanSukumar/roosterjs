@@ -18,6 +18,11 @@ export function handleTable(
     tableNode.appendChild(tbody);
 
     for (let row = 0; row < table.cells.length; row++) {
+        if (table.cells[row].length == 0) {
+            // Skip empty row
+            continue;
+        }
+
         const tr = doc.createElement('tr');
         tbody.appendChild(tr);
 

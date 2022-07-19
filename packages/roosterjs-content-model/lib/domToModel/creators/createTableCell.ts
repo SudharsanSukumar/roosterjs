@@ -13,12 +13,11 @@ export function createTableCell(
     isHeader: boolean
 ): ContentModelTableCell {
     return {
-        blockGroupType: ContentModelBlockGroupType.TableCell,
         blockType: ContentModelBlockType.BlockGroup,
+        blockGroupType: ContentModelBlockGroupType.TableCell,
         blocks: [],
-        // td: hasTd ? td : null,
-        spanLeft: colSpan > 0,
-        spanAbove: rowSpan > 0,
+        spanLeft: colSpan > 1,
+        spanAbove: rowSpan > 1,
         isHeader,
     };
 }
